@@ -1,0 +1,198 @@
+\documentclass[a4paper, oneside, 12pt]{book}
+\usepackage[russian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[left=3cm, top=1.5cm, bottom=1.5cm, right=3cm]{geometry}
+\usepackage[derivative, vectors, complex]{hedmaths}
+\renewcommand{\vec}[1]{\boldsymbol{#1}}
+\usepackage{amsmath}
+\begin{document}
+
+\title{Электродинамика СВЧ}
+\author{В. Динамик, А. Электрик}
+\maketitle
+\tableofcontents
+\chapter*{Несколько слов об этом}
+\addcontentsline{toc}{chapter}{Несколько слов об этом}
+    Привет читатель! Если ты читаешь это, то мы тебе не завидуем. Сегодня мало
+    кому придёт в голову читать брошюрку двух никому не известных ребят,
+    посвящённую электродинамике СВЧ. Чтобы помочь читателю справиться с горем,
+    которое сподвигло его к чтению этой книги, мы на пальцах и с юмором
+    пробежимся по основным аспектам и особенностям миллиметровых волноводов,
+    потому как больше писать тут просто не о чем. Мы постарались сделать книгу
+    легко читаемой: для понимания, читатель должен быть в курсе, что такое
+    \emph{частная производная}, знать, что \( i^2 = -1 \) и что
+    \emph{\bfseries на ноль делить нельзя}.
+
+    Авторы этого произведения физической мысли благодарны С****** за то, что он
+    настолько крут, что авторы ему за это благодарны.
+
+    Книга написана по мотивам лекций по курсу (барабанная дробь) электродинамики
+    СВЧ нашего любимого преподавателя М. В. Г******. Желаем вам приятного
+    времяпреповождения!
+\chapter{Диапазоны СВЧ}
+  Диапазоны:
+  \begin{itemize}
+    \item Дециметровый диапазон: 0,3 -- 3 ГГц (УВЧ)
+    \item Сантиметровый диапазон: 3 -- 30 ГГц (СВЧ)
+    \item Миллиметровый диапазон: 30 -- 300 ГГц (КВЧ)
+  \end{itemize}
+
+\chapter{Основные уравнения}
+  Уравнения Максвелла
+  \[
+  \begin{cases}
+    \divergence \vec{B} = 0\\
+    \divergence\vec{D} = \rho\\
+    \rotor\vec{H} = \vec{j} + \pder{\vec{D}}{t}\\
+    \rotor\vec{E} = -\pder{\vec{B}}{t},
+  \end{cases}
+  \]
+  \[
+    \vec{j} = \vec{j}^\text{пр} + \vec{j}^\text{к} + \vec{j}^\text{ст},
+  \]
+  \[
+    \vec{j}^\text{пр} = \sigma\vec{E}, \vec{j}^\text{к} = \rho\vec{v}.
+  \]
+  Материальные уравнения
+  \[
+    \vec{P} = \eps_0\kappa\vec{E}, \vec{D} = \eps\vec{E}, \vec{B} = \mu\vec{H}.
+  \]
+  Если \(\omega\eps/\sigma \gg 1\) -- то это диэлектрик, а если \(\omega\eps/\sigma \ll 1\) -- это проводник.
+
+  Граничные условия:
+  \[
+    \vec{n}\times(\vec{H}_1 - \vec{H}_2) = \vec{I}_s,
+  \]
+  \[
+    \vec{n}\times(\vec{E}_1 - \vec{E}_2) = 0,
+  \]
+  \[
+    \vec{n}\cdot(\vec{D}_1 - \vec{D}_2) = \rho_s,
+  \]
+  \[
+    \vec{n}\cdot(\vec{B}_1 - \vec{B}_2) = 0.
+  \]
+  Закон сохранения энергии:
+  \[
+    \pder{}{t}\left(\frac{\vec{E}\cdot\vec{D}}{2} + \frac{\vec{H}\cdot\vec{B}}{2}\right) = -\divergence(\vec{E}\times\vec{H}) - \vec{j}\cdot\vec{E}.
+  \]
+  \[
+    \pder{}{t}\int_V\left(\frac{\vec{E}\cdot\vec{D}}{2} + \frac{\vec{H}\cdot\vec{B}}{2}\right)\,dV = -\oint_S\vec{\Pi}\cdot\vec{dS} - \int_V\vec{j}\cdot\vec{E}\,dV.
+  \]
+  Комплексные амплитуды:
+  \[
+    \vec{E}(\vec{r}, t) = \Re \left(\hat{\vec{E}}(\vec{r}, t) e^{i\omega t} \right)
+  \]
+  Используя этот аппарат можно заменить оператор \(\pder{}{t} = i\omega \) и переписать уравнения Максвелла
+    \[
+  \begin{cases}
+    \divergence \vec{B} = 0\\
+    \divergence\vec{D} = \rho\\
+    \rotor\vec{H} = \vec{j}^\text{ст}+\sigma\vec{E} + i\omega\vec{D}\\
+    \rotor\vec{E} = -i\omega\vec{B}.
+  \end{cases}
+  \]
+  \[
+    \vec{D} = \eps e^{i\Delta_\eps}\vec{E}, \vec{B} = \mu e^{i\delta_\mu}\vec{H}.
+  \]
+      \[
+  \begin{cases}
+    \divergence\mu\vec{H} = 0\\
+    \divergence\eps\vec{E} = \rho\\
+    \rotor\vec{H} = \vec{j}^\text{ст} + i\omega\eps\vec{E}\\
+    \rotor\vec{E} = -i\omega\mu\vec{H}.
+  \end{cases}
+  \]
+  Комплексные проницаемости:
+  \[
+    \eps = \eps' - i\eps'', \mu = \mu' - i\mu''.
+  \]
+  Отсюда
+  \[
+    \eps' = \eps\cos\Delta_\eps,\quad\eps'' = \eps\sin\Delta_\eps + \frac{\sigma}{\omega},
+  \]
+  \[
+    \mu' = \eps\cos\delta_\mu,\quad\mu'' = \eps\sin\delta_\mu.
+  \]
+  Средние плотности энергии:
+  \[
+    \average{w_E} = \frac{1}{4}\eps'\vec{E}\vec{E}^*,\quad
+    \average{w_H} = \frac{1}{4}\mu'\vec{H}\vec{H}^*.
+  \]
+
+    \[
+    i\omega\int_V\left(\frac{\eps\vec{E}\cdot\vec{E}^*}{2} - \frac{\mu\vec{H}\cdot\vec{H}^*}{2}\right)\,dV = -\oint_S\vec{\Pi}\cdot\vec{dS} -\frac{1}{2}\int_V\vec{j}\cdot\vec{E}^*\,dV.
+  \]
+  \[
+    \omega\int_V\left(\frac{\eps''\vec{E}\cdot\vec{E}^*}{2} + \frac{\mu''\vec{H}\cdot\vec{H}^*}{2}\right)\,dV = -\Re\oint_S\vec{\Pi}\cdot\vec{dS} - \Re P_\text{вз},
+  \]
+  \[
+    \omega\int_V\left(\frac{\eps'\vec{E}\cdot\vec{E}^*}{2} - \frac{\mu'\vec{H}\cdot\vec{H}^*}{2}\right)\,dV = -\Im\oint_S\vec{\Pi}\cdot\vec{dS} - \Im P_\text{вз},
+  \]
+
+  Лемма Лоренца:
+  если есть два независимых тока, создающих по отдельности соответствующие поля, то
+  \[
+  \divergence\{ \vec{E}_1\times\vec{H}_2 - \vec{E}_2\times\vec{H}_1 \} =
+  \vec{j}_1^\text{ст}\cdot\vec{E}_2 - \vec{j}_2^\text{ст}\cdot\vec{E}_1.
+  \]
+
+  Теорема о взаимности:
+  \[
+    \int_{V_1} \vec{j}_1^\text{ст}\cdot\vec{E}_2\,dV = \int_{V_2} \vec{j}_2^\text{ст}\cdot\vec{E}_1\,dV.
+  \]
+  Справедлива только в средах с симметричными тензорами.
+
+  Задачи электродинамики:
+  \begin{itemize}
+  \item внутренняя задача: объем поля ограничен замкнутой поверхностью, вне которого поля не зуществует; решене существует и единственно если
+  \begin{enumerate}
+  \item если среда поглащающая или регеративная
+  \item на поверхности заданы касательные составляющие электрического или магнитного полей
+  \end{enumerate}
+  \item внешняя задача: ищется решение для неограниченного протранства при наличии заданных источников поля и, возможно, областей, гдн поле отсутствует; решение существует и единственно, если
+    \begin{enumerate}
+  \item если среда поглащающая
+  \item на поверхности областей, вне которых определяется поле, заданы касательные составляющие электрического или магнитного полей
+  \item \(\ds\lim_{r\to\infty}\oint_{4\pi r^2} \vec{E}\times\vec{H}^*\cdot\vec{dS}\).
+  \end{enumerate}
+  \end{itemize}
+
+\chapter{Распространение волн}
+Рассмотрим распространение плоской волны вдоль оси \(Oz\). При этом
+
+\[
+    \pder{}{x} = \pder{}{y} = 0,
+\]
+
+\[
+    \begin{cases}
+        -\pder{H_y}{z} = i\omega\eps E_x,\quad \pder{H_x}{z} = i\omega\eps E_y,\\
+        -\pder{E_y}{z} = -i\omega\mu H_x,\quad \pder{E_x}{z} = -i\omega\mu H_y,\\
+        0 = i\omega\eps E_z,\quad 0 = -i\omega\mu H_z.
+    \end{cases}
+\]
+Отсюда
+\[
+    \begin{cases}
+        \ppder{E_x}{z} + k^2 E_x = 0,\\
+        \ppder{H_y}{z} + k^2 H_y = 0,\\
+    \end{cases}
+\]
+где \( k = \sqrt{\eps\mu} = \omega n / c \).
+Решение ищем в виде суперпозиции волн, бегущих в разных направлениях вдоль оси
+\( Oz \):
+
+\[
+    E_x = Ae^{-ikz} + Be^{ikz},\quad H_y = Z_c^{-1} (Ae^{-ikz} - Be^{ikz}),
+\]
+
+где \( Z_c = \sqrt{\mu / \eps} \) -- характеристическое сопротивление среды.
+Далее будем рассматривать только падающую волну:
+\[
+    E_x = Ae^{-ikz},\quad H_y = Z_c^{-1} Ae^{-ikz}.
+\]
+В непоглощающей среде \(\eps\) и \(\mu\) -- вещественные, поэтому и \(Z_c\)
+также вещественно.
+\end{document}
