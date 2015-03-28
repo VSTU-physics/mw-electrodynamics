@@ -97,8 +97,307 @@ H-волны (TE):
     ylabel = {$v / c$},
     minor tick num = 2
 ]
-\addplot[domain=0:0.97,samples=100]{(1 - x^2)^-0.5} node[pos=0.75,pin=170:{$v_p$}]{};
-\addplot[domain=0:1,samples=100]{(1 - x^2)^0.5} node[pos=0.8,pin=100:{$v_g$}]{};
+\addplot[domain=0:0.97,samples=100,line width=1.5pt]{(1 - x^2)^-0.5} node[pos=0.75,pin=170:{$v_p$}]{};
+\addplot[domain=0:1,samples=100,line width=1.5pt]{sqrt(1 - x^2)} node[pos=0.8,pin=100:{$v_g$}]{};
 \end{axis}
 \end{tikzpicture}
 \end{center}
+
+
+Относительное расположение критических длин волн:
+\begin{center}
+	\begin{tikzpicture}[>=stealth]
+		\draw[->](0,0) -- (5,0);
+		\draw[fill] (1,0) circle(1.5pt) node[below]{$E_{11}$};
+		\draw[fill] (3,0) circle(1.5pt) node[below]{$H_{01}$};
+		\draw[fill] (4,0) circle(1.5pt) node[below]{$H_{10}$};
+		\draw (5,0) node[below]{$\lambda$};
+	\end{tikzpicture}
+\end{center}
+
+Характеристические сопротивления для волн:
+\begin{align*}
+	Z_c^E = & \sqrt{\frac{E_xE_x^* + E_yE_y^*}{H_xH_x^* + H_yH_y^*}} = \frac{h}{\omega\eps} = Z_c\sqrt{1 - \frac{\lambda_0^2}{\lambda_c^2}},\\
+	Z_c^H = & \sqrt{\frac{E_xE_x^* + E_yE_y^*}{H_xH_x^* + H_yH_y^*}} = \frac{\omega\mu}{h} = \frac{Z_c}{\sqrt{1 - \frac{\lambda_0^2}{\lambda_c^2}}}.
+\end{align*}
+
+Рассмотрим передачу мощности в волне \( H_{10} \):
+\[
+	\Pi_z = -\frac{1}{2}E_y H_x^* = \frac{1}{2}\frac{h}{\omega\mu}E_yE_y^* = \frac{h}{2\omega\mu}\omega^2\mu^2 H_0^2\sin^2\frac{\pi x}{a} = \frac{\omega\mu h}{2}H_0^2\sin^2\frac{\pi x}{a},
+\]
+\[
+	h= \frac{2\pi}{\lambda_0}\sqrt{1 - \frac{\lambda_0^2}{4a^2}},
+\]
+\[
+	\Pi_z = \frac{\mu ca^2}{\pi\lambda_0^2}\sqrt{1 - \frac{\lambda_0^2}{4a^2}}H_0^2\sin^2\frac{\pi x}{a},
+\]
+а передаваемая мощность определяется интегралом по поперечному сечению:
+\[
+	P = \frac{\mu ca^3b}{2\pi\lambda_0^2}\sqrt{1 - \frac{\lambda_0^2}{4a^2}}H_0^2 = \frac{abh}{4\omega\mu}E_{max}^2.
+\]
+
+
+\section{Затухание}
+Причины:
+\begin{itemize}
+	\item потери с среде
+	\item потери в металле
+	\item излучение в пространство
+\end{itemize}
+
+Чтобы учесть потери можно рассмотреть
+\[
+	h = h' - ih''
+\]
+
+Мощность потерь
+\[
+	P = P_d + P_m + P_e,
+\]
+
+Поверхностный ток на стенках волновода
+\[
+	\vec{i}_s = \vec{n}\times\vec{H}_\tau.
+\]
+
+Для потерь вдоль волновода имеет место соотношение
+\[
+	\der{P}{z} = -2h''P = -\der{P_m}{z}.
+\]
+
+\[
+	\der{P}{z} = -\frac{1}{2}\Re Z_{Me}\oint_C |H_\tau^2| dl,
+\]
+
+\[
+	h'' = \frac{1}{2}\frac{\Re Z_{Me}\oint_C |H_\tau^2| dl}{\iint_S \Pi_z dS}.
+\]
+
+\[
+	\oint_C |H_\tau^2| dl = 2 \left( \int_{y=0, x=0}^{x=a} H_x^2 dx +
+	\int_{x=0, y=0}^{y=b} H_y^2 dx  \right).
+\]
+
+\[
+\int_{y=0, x=0}^{x=a} H_x^2 dx = \left(\frac{\omega\eps n\pi}{g_{m,n}^2b}\right)^2\int_{y=0, x=0}^{x=a} E_0^2\sin^2\frac{m\pi x}{a} dx = \frac{a}{2}\left(\frac{\omega\eps n\pi E_0}{g_{m,n}^2b}\right)^2.
+\]
+\[
+	\int_{x=0, y=0}^{y=b} H_y^2 dx = \frac{b}{2}\left(
+	\frac{\omega\eps m\pi}{g_{m,n}^2a}E_0\right)^2,
+\]
+\[
+	\oint_C |H_\tau^2| dl =\left(\frac{\omega\eps \pi}{g_{m,n}^2}E_0\right)^2 \frac{n^2a^3 + m^2b^3}{a^2b^2}.
+\]
+Знаменатель:
+\[
+	\iint_S (E_xH_y^* - E_yH_x^*) dS = \frac{\omega\eps}{h}
+	\left(\frac{h\pi}{g_{m,n}^2}E_0\right)^2\frac{ab}{4}
+	\left(\frac{m^2}{a^2}+\frac{n^2}{b^2}\right) =
+	\frac{\omega\eps}{h}
+	\left(\frac{h}{g_{m,n}}E_0\right)^2\frac{ab}{4},
+\]
+откуда
+\[
+	h'' = \frac{2Z_{Me}\frac{\omega\eps \pi^2}{g_{m,n}^2} (n^2a^3 + m^2b^3)}{ha^3b^3}
+\]
+
+Если ввести сквозную нумерацию гармоник, то
+\[
+	\int (\vec{E}_m\times\vec{H}_n^*)\cdot\vec{dS}_\perp = \delta_{mn}N_m.
+\]
+
+Рассмотрим подробнее
+\[
+	(\vec{E}_m\times\vec{H}_n^*)\cdot\vec{z}_0 =
+	\begin{vmatrix}
+		E_{mx} & E_{my}\\
+		H_{nx}^* & H_{ny}^*\\
+	\end{vmatrix}
+	=
+	E_{mx}H_{ny}^* - E_{my}H_{nx}^*.
+\]
+
+Моды являются собсвенными функциями системы уравнений
+\[
+	\Delta_\perp E_{m\alpha} + g_m^2 E_{m\alpha} = 0,\quad \Delta_\perp H_{n\alpha}^* + g_n^2 H_{n\alpha}^* = 0.
+\]
+с нужными граничными условиями.
+
+Помножим некоторые уравнения, чтобы получить:
+\[
+	H_{ny}^*\Delta_\perp E_{mx} + g_m^2 H_{ny}^*E_{mx} = 0,
+\]
+\[
+	H_{nx}^*\Delta_\perp E_{my} + g_m^2 H_{nx}^*E_{my} = 0,
+\]
+откуда
+\[
+	g_m^2(E_{mx}H_{ny}^* - E_{my}H_{nx}^*) = H_{nx}^*\Delta_\perp E_{my} - H_{ny}^*\Delta_\perp E_{mx}
+\]
+Аналогично
+\[
+	g_n^2(E_{mx}H_{ny}^* - E_{my}H_{nx}^*) = \Delta_\perp H_{nx}^* E_{my} - \Delta_\perp H_{ny}^* E_{mx}
+\]
+
+Теперь:
+\begin{align*}
+	&(g_m^2 - g_n^2)(E_{mx}H_{ny}^* - E_{my}H_{nx}^*) =\\
+	& = \int_{S_\perp} dS \left( H_{nx}^*\Delta_\perp E_{my} - \Delta_\perp H_{nx}^* E_{my} \right)
+	-
+	\int_{S_\perp} dS \left( H_{ny}^*\Delta_\perp E_{mx} - \Delta_\perp H_{ny}^* E_{mx} \right) =\\
+	& = \int_C dl \left(H_{nx}^* \pder{E_{my}}{n} - E_{my}\pder{H_{ny}^*}{n}\right) -
+	\int_C dl \left( H_{ny}^*\pder{E_{mx}}{n} - \pder{H_{ny}^*}{n} E_{mx} \right)
+\end{align*}
+
+\section{Коаксиальный волновод}
+
+Основной режим работы -- TEM-волны, волноводные гармоники -- паразитные.
+
+\[
+	\Delta_\perp E_z = g^2 E_z = 0,\quad \Delta_\perp H_z = g^2 H_z = 0.
+\]
+с граничными
+\[
+	\left.E_\tau\right|_{r=a,b} = 0 \Rightarrow \left.E_z\right|_{r=a,b} = 0, \left.\pder{H_z}{r}\right|_{r=a,b} = 0
+\]
+\[
+	\frac{1}{r}\pder{}{r}\left( rE_z \right) + \frac{1}{r^2}\ppder{E_z}{\phi} + g^2E_z = 0.
+\]
+\[
+	E_z = [AJ_m(gr) + BN_m(gr)]\cos(m\phi)
+\]
+При \( b = 0 \) \( B = 0 \)
+\[
+	E_z = E_0J_m(gr)\cos(m\phi).
+\]
+Поперечные волновые числа определяются из условия
+\[
+	J_m(ga) = 0,\ g_{mn} = \frac{\nu_{mn}}{a}.
+\]
+
+\begin{align*}
+	E_z &= E_0 J_m(\frac{\nu_{mn}}{a}r)\Phi(m\phi),\\
+	E_r &= -\frac{iha}{\nu_{mn}}E_0 J_m'(\frac{\nu_{mn}}{a}r)\Phi(m\phi),\\
+	E_\phi &= -\frac{iha^2m}{\nu_{mn}^2r}E_0 J_m(\frac{\nu_{mn}}{a}r)\Phi'(m\phi),\\
+	H_z &= 0,\\
+	H_r &= -\frac{\omega\eps}{h}E_\phi,\\
+	H_\phi &= \frac{\omega\eps}{h}E_r.
+\end{align*}
+
+
+Рассмотрим теперь \( H \)-волны:
+\[
+	\Delta_\perp H_z + g^2H_z = 0,\quad \left.\pder{H_z}{n}\right|_{r=a,b}= 0
+\]
+
+\[
+	H_z = [AJ_m(gr) + BN_m(gr)]\Phi(m\phi)
+\]
+
+Если \( b=0 \), то в силу ограниченности поля \(B = 0\), а дисперсионное соотношение имеет вид
+\[
+	J_m'(ga) = 0 \Rightarrow ga = \mu_{mn}, g_{mn} = \frac{\mu_{mn}}{a}, \lambda_c = \frac{2\pi a}{\mu_{mn}}, \mu_{11} = 1.841.
+\]
+
+Поля в волноводе имеют вид:
+\begin{align*}
+	H_z &= H_0 J_m(\frac{\mu_{mn}}{a}r)\Phi(m\phi),\\
+	E_r &= -\frac{i\omega\mu a^2m}{r\mu_{mn}^2}H_0 J_m(\frac{\mu_{mn}}{a}r)\Phi'(m\phi),\\
+	E_\phi &= \frac{i\omega\mu a}{\mu_{mn}}E_0 J_m'(\frac{\mu_{mn}}{a}r)\Phi(m\phi),\\
+	E_z &= 0,\\
+	H_r &= -\frac{h}{\omega\mu}E_\phi,\\
+	H_\phi &= \frac{h}{\omega\mu}E_r.
+\end{align*}
+
+Для коаксиального волновода имеем
+\[
+	\begin{cases}
+		AJ_m'(gb) + BN_m'(gb) = 0,\\
+		AJ_m'(ga) + BN_m'(ga) = 0.\\
+	\end{cases},
+	\quad
+	J_m'(gb)N_m'(ga) - J_m'(ga)N_m'(gb) = 0
+\]
+
+Характеристическое сопротивление волновода
+\[
+	Z_c = \frac{E_\perp}{H_\perp}.
+\]
+
+Рассчитаем потери в круглом волноводе (на гармонике \(E_{01}\)):
+\[
+	h'' = \frac{\Re Z_m}{2}\frac{\oint dl |\vec{H_\tau}|^2}{\iint \vec{dS}\cdot(\vec{E}\times\vec{H}^*)},
+\]
+\begin{align*}
+	E_r &= -\frac{iha}{\nu_{mn}}E_0 J_m'(\frac{\nu_{mn}}{a}r)\Phi(m\phi),\\
+	H_\phi &= \frac{\omega\eps}{h}E_r.
+\end{align*}
+\[
+	\oint dl |\vec{H_\tau}|^2 = \int_0^{2\pi} a d\phi\,|H_\phi|^2 =
+	\frac{a^3\omega^2\eps^2}{\nu_{mn}^2}E_0^2J_m'^2(\nu_{mn})\int_0^{2\pi} d\phi\,\Phi^2(m\phi) = \frac{a^3\omega^2\eps^2}{2\nu_{mn}^2}E_0^2J_m'^2(\nu_{mn})
+\]
+
+\[
+	\iint \vec{dS}\cdot(\vec{E}\times\vec{H}^*) = \int_0^{2\pi}d\phi\Phi^2(m\phi)\int_0^a rdr \frac{ha^2\omega\eps}{\nu_{mn}^2}E_0^2J_m'^2(\frac{\nu_{mn}}{a}r)= \frac{ha^2\omega\eps}{2\nu_{mn}^2}E_0^2 \int_0^a rdrJ_m'^2(\frac{\nu_{mn}}{a}r)
+\]
+
+Определить число мод, возбуждаемых в волноводе 72 на 34 мм на частоте 10 ГГц.
+
+Определить структуру токов в стенках волновода.
+
+Определить размер квадратного волновода, если на частоте 7.5 ГГц фазовая скорость волны \(E_{21}\) равна \( u = 2.5c \).
+\[
+	g^2 = \pi^2\frac{n^2 + m^2}{a^2} = \omega^2/c^2 - h^2 = 4\pi^2f^2/c^2 \frac{5.25}{6.25},\ a^2 = \frac{6.25 c^2}{5.25}\frac{n^2 + m^2}{4f^2},
+\]
+\[
+	a = \sqrt{\frac{6.25}{5.25}}\frac{c\sqrt{n^2 + m^2}}{2f} = 0.049~\text{м}.
+\]
+
+\section{Волноводы странной формы}
+
+П-образные волноводы позволяют получать разреженный спектр. Расплатой за это является меньшая мощность и большие потери.
+
+Для расчёта такого рода волноводов приходится использовать численные методы.
+
+
+\section{Диэлектрические волноводы}
+
+Рассмотрим оптически более плотный волновод в среде. В силу явления полного внутреннего отражения в нём может распространяться волна.
+
+\[
+	\sin\phi_0 = n_1 / n_2.
+\]
+
+При таких переотражениях получается волна, распространяющаяся вдоль волновода.
+
+Фазовая скорость волны равна
+\[
+	v_p = \frac{u_2}{\sin\phi} \le u_1,
+\]
+\[
+	u_1 \ge v_p \ge u_2.
+\]
+
+Угол \( \phi \) падения связан с размерами и частотой волны. Если \( \phi < \phi_0 \), то волна рассеивается в окружающее пространство. Следовательно, получается отсечка.
+
+\[
+	h^2 = k_1^2 - g_1^2 = k_2^2 - g_2^2.
+\]
+\[
+	g_2^2 > 0,\ g_1^2 < 0,
+\]
+\[
+	g_1 = iq,\ g_2 = g.
+\]
+
+\[
+	\eps_1\mu_1\omega^2 + q^2 = \eps_2\mu_2\omega^2 - g^2.
+\]
+Пусть \( a \) -- характерный размер волновода, тогда
+\[
+	\overline{g} = ag,\quad \overline{q} = aq,
+\]
+\[
+	\overline{q}^2 + \overline{g}^2 = a^2\omega^2\eps_1\mu_1(\overline{eps}\overline{\mu} - 1) = \overline{k}_1^2(\overline{eps}\overline{\mu} - 1) = \overline{R}^2.
+\]
+\(\overline{R}\) -- нормированная частота.
