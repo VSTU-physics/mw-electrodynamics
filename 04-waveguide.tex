@@ -1,4 +1,74 @@
 \chapter{Волны в волноводе}
+
+Волновод -- это конструкция, которая позволяет волне переносить энергию внутри себя. С помощью неё можно протащить ЭМВ от их источника к приёмнику не рассеивая их попусту, а также делать другие странные вещи. Как правило волноводы бывают металлические (с металлической границей и диэлектрическим заполнением) и диэлектрические (как металлические, только без металла).
+
+Рассмотрим простейший вариант волновода, а именно объём, ограниченный цилиндрической поверхностью. Направим ось \( Oz \) вдоль оси волновода. Тогда поля в волноводе будут иметь вид
+\[
+	\vec{E}(\vec{r}, t) = \vec{E}(\vec{r}_\perp)e^{i(\omega t - hz)},\quad
+	\vec{H}(\vec{r}, t) = \vec{H}(\vec{r}_\perp)e^{i(\omega t - hz)}
+\]
+где \( h \) -- волноводное (продольное) волновое число.
+
+Волна в волноводе удовлетворяет однородному волновому уравнению:
+\[
+	\square \vec{E}(\vec{r}, t) = 0,\quad \square = \Delta - \frac{1}{u^2}\ppder{}{t}.
+\]
+Подставляя вид поля, получаем
+\[
+	(\Delta_\perp - h^2 + \frac{\omega^2}{u^2}) \vec{E} = 0,
+\]
+где под \( \vec{E} \) понимается поле, зависящее только от поперечных координат. Везде далее в этой главе это будет подразумеваться. \( u \) -- скорость света в среде, заполняющей волновод.
+
+Обозначим \( k = \omega / u \) -- постоянная распространения, \( g = \sqrt{k^2 - h^2} \) -- поперечное волновое число. Тогда уравнение примет вид уравнения Гельмгольца со всеми вытекающими решениями:
+\[
+	(\Delta_\perp + g^2) \vec{E} = 0, \quad (\Delta_\perp + g^2) \vec{H} = 0
+\]
+Вид этих решений зависит от выбора системы координат.
+
+Отметим, что компоненты связаны друг с другом через уравнения Максвелла:
+\[
+	\begin{cases}
+		\rotor\vec{E} = -i\omega\mu\vec{H},\\
+		\rotor\vec{H} = i\omega\eps\vec{E},
+	\end{cases}
+\]
+
+Выберем в каждой точке перпендикулярные единичные вектора \( \vec{e}_\xi \) и \( \vec{e}_\eta \) так, чтобы \( (\vec{e}_\xi, \vec{e}_\eta, \vec{e}_z) = 1 \) и введём вдоль них координаты \( \xi \) и \( \eta \). Это соответствует любым ортогональным координатам. Расписывая покоординатно, имеем
+\[
+	\begin{cases}
+		\frac{1}{l_\eta}\pder{E_z}{\eta} + ih E_\eta = -i\omega\mu H_\xi,\\
+		-\frac{1}{l_\xi}\pder{E_z}{\xi} - ih E_\xi = -i\omega\mu H_\eta,\\
+		\frac{1}{l_\eta}\pder{H_z}{\eta} + ihH_\eta = i\omega\eps E_\xi,\\
+		-\frac{1}{l_\xi}\pder{H_z}{\xi} - ihH_\xi = i\omega\eps E_\eta,\\
+	\end{cases}
+\]
+где \( l_\alpha \) -- коэффициенты Ламэ (буква \( H \) занята магнитным полем).
+
+Можно рассматривать поперечные компоненты как функции продольных:
+\[
+	\begin{cases}
+		ihE_\eta + i\omega\mu H_\xi = -\frac{1}{l_\eta}\pder{E_z}{\eta},\\
+		i\omega\eps E_\eta + ihH_\xi = -\frac{1}{l_\xi}\pder{H_z}{\xi},\\
+		-ihE_\xi + i\omega\mu H_\eta = \frac{1}{l_\xi}\pder{E_z}{\xi},\\
+		- i\omega\eps E_\xi + ihH_\eta = -\frac{1}{l_\eta}\pder{H_z}{\eta},\\
+	\end{cases}
+\]
+откуда
+\[
+	\begin{cases}
+		E_\xi  = \frac{-i}{g^2}\left(\frac{h}{l_\xi}\pder{E_z}{\xi} +\frac{\omega\mu}{l_\eta}\pder{H_z}{\eta}\right),\\
+		E_\eta = \frac{-i}{g^2}\left(\frac{h}{l_\eta}\pder{E_z}{\eta} - \frac{\omega\mu}{l_\xi}\pder{H_z}{\xi}\right),\\
+		H_\xi  = \frac{i}{g^2}\left(\frac{\omega\eps}{l_\eta}\pder{E_z}{\eta} - \frac{h}{l_\xi}\pder{H_z}{\xi}\right),\\
+		H_\eta = \frac{-i}{g^2}\left(\frac{\omega\eps}{l_\xi}\pder{E_z}{\xi} + \frac{h}{l_\eta}\pder{H_z}{\eta}\right),
+	\end{cases}
+\]
+а \( E_z \) и \( H_z \) -- решения уравнений Гельмгольца:
+\[
+	(\Delta_\perp + g^2) E_z = 0, \quad (\Delta_\perp + g^2) H_z = 0
+\]
+
+Для полной постановки задачи осталось определить граничные условия.
+
 \section{В прямоугольном волноводе}
 
 \begin{gather*}
@@ -8,27 +78,11 @@
 	H_y = \frac{-i}{g^2}\left(\omega\eps\pder{E_z}{x} + h\pder{H_z}{y}\right).
 \end{gather*}
 
-\section{В круглом волноводе}
-\begin{gather*}
-	E_r =    \frac{-i}{g^2}\left(h\pder{E_z}{r} + \frac{\omega\mu}{r}\pder{H_z}{\phi}\right),\\
-	E_\phi = \frac{-i}{g^2}\left(\frac{h}{r}\pder{E_z}{\phi} - \omega\mu\pder{H_z}{r}\right),\\
-	H_r =    \frac{i}{g^2}\left(\frac{\omega\eps}{r}\pder{E_z}{\phi} - h\pder{H_z}{r}\right),\\
-	H_\phi = \frac{-i}{g^2}\left(\omega\eps\pder{E_z}{r} + \frac{h}{r}\pder{H_z}{\phi}\right).
-\end{gather*}
-
-Из уравнения Гельмгольца получаем для продольных компонент поля
-\begin{gather}
-	\Delta_\perp E_z + g^2 E_z = 0,\\
-	\Delta_\perp H_z + g^2 H_z = 0.
-\end{gather}
-
 В системе могут существовать отдельные TE и TM волны, если на контуре волновода
 \[
 	\pder{E_z}{l} = \pder{H_z}{l} = 0.
 \]
 Если условие не выполняются, то в системе будут наблюдаться гибридные волны.
-
-\section{Прямоугольном волновод}
 
 Рассмотрим прямоугольный волновод \( a \times b, a > b, a || Ox \).
 
@@ -250,6 +304,12 @@ H-волны (TE):
 \end{align*}
 
 \section{Коаксиальный волновод}
+\begin{gather*}
+	E_r =    \frac{-i}{g^2}\left(h\pder{E_z}{r} + \frac{\omega\mu}{r}\pder{H_z}{\phi}\right),\\
+	E_\phi = \frac{-i}{g^2}\left(\frac{h}{r}\pder{E_z}{\phi} - \omega\mu\pder{H_z}{r}\right),\\
+	H_r =    \frac{i}{g^2}\left(\frac{\omega\eps}{r}\pder{E_z}{\phi} - h\pder{H_z}{r}\right),\\
+	H_\phi = \frac{-i}{g^2}\left(\omega\eps\pder{E_z}{r} + \frac{h}{r}\pder{H_z}{\phi}\right).
+\end{gather*}
 
 Основной режим работы -- TEM-волны, волноводные гармоники -- паразитные.
 
@@ -329,16 +389,26 @@ H-волны (TE):
 	h'' = \frac{\Re Z_m}{2}\frac{\oint dl |\vec{H_\tau}|^2}{\iint \vec{dS}\cdot(\vec{E}\times\vec{H}^*)},
 \]
 \begin{align*}
-	E_r &= -\frac{iha}{\nu_{mn}}E_0 J_m'(\frac{\nu_{mn}}{a}r)\Phi(m\phi),\\
+	E_r &= -\frac{iha}{\nu_{01}}E_0 J_0'(\frac{\nu_{01}}{a}r),\\
 	H_\phi &= \frac{\omega\eps}{h}E_r.
 \end{align*}
 \[
 	\oint dl |\vec{H_\tau}|^2 = \int_0^{2\pi} a d\phi\,|H_\phi|^2 =
-	\frac{a^3\omega^2\eps^2}{\nu_{mn}^2}E_0^2J_m'^2(\nu_{mn})\int_0^{2\pi} d\phi\,\Phi^2(m\phi) = \frac{a^3\omega^2\eps^2}{2\nu_{mn}^2}E_0^2J_m'^2(\nu_{mn})
+	\frac{a^3\omega^2\eps^2}{\nu_{01}^2}E_0^2J_0'^2(\nu_{01})\int_0^{2\pi} d\phi = \frac{2\pi a^3\omega^2\eps^2}{\nu_{01}^2}E_0^2J_0'^2(\nu_{01})
 \]
 
 \[
-	\iint \vec{dS}\cdot(\vec{E}\times\vec{H}^*) = \int_0^{2\pi}d\phi\Phi^2(m\phi)\int_0^a rdr \frac{ha^2\omega\eps}{\nu_{mn}^2}E_0^2J_m'^2(\frac{\nu_{mn}}{a}r)= \frac{ha^2\omega\eps}{2\nu_{mn}^2}E_0^2 \int_0^a rdrJ_m'^2(\frac{\nu_{mn}}{a}r)
+	\iint \vec{dS}\cdot(\vec{E}\times\vec{H}^*) = \int_0^{2\pi}d\phi\int_0^a rdr \frac{ha^2\omega\eps}{\nu_{01}^2}E_0^2J_0'^2(\frac{\nu_{01}}{a}r)= \frac{2\pi ha^2\omega\eps}{\nu_{01}^2}E_0^2 \int_0^a rdrJ_0'^2(\frac{\nu_{01}}{a}r)
+\]
+Рассмотрим подробнее интеграл:
+\[
+	\int_0^a rdr J_0'^2(\frac{\nu_{01}}{a}r) =
+	\frac{a^2}{\nu_{01}^2}\int_0^{\nu_{01}} J_0'^2(x) x dx =
+	\frac{a^2}{2}J_0'^2(\nu_{01}).
+\]
+Собирая всё вместе, получаем:
+\[
+	h'' = \frac{\Re Z_m}{2}\frac{\frac{2\pi a^3\omega^2\eps^2}{\nu_{01}^2}E_0^2J_0'^2(\nu_{01})}{\frac{2\pi ha^2\omega\eps}{\nu_{01}^2}E_0^2\frac{a^2}{2}J_0'^2(\nu_{01})} = \frac{\Re Z_m}{2}\frac{\omega\eps}{ha}.
 \]
 
 Определить число мод, возбуждаемых в волноводе 72 на 34 мм на частоте 10 ГГц.
