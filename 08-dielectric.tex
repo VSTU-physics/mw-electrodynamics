@@ -1,0 +1,134 @@
+\chapter{Диэлектрические волноводы}
+
+Рассмотрим оптически более плотный волновод в среде. В силу явления полного внутреннего отражения в нём может распространяться волна.
+
+\[
+	\sin\phi_0 = n_1 / n_2.
+\]
+
+При таких переотражениях получается волна, распространяющаяся вдоль волновода.
+
+Фазовая скорость волны равна
+\[
+	v_p = \frac{u_2}{\sin\phi} \le u_1,
+\]
+\[
+	u_1 \ge v_p \ge u_2.
+\]
+
+Угол \( \phi \) падения связан с размерами и частотой волны. Если \( \phi < \phi_0 \), то волна рассеивается в окружающее пространство. Следовательно, получается отсечка.
+
+\[
+	h^2 = k_1^2 - g_1^2 = k_2^2 - g_2^2.
+\]
+\[
+	g_2^2 > 0,\ g_1^2 < 0,
+\]
+\[
+	g_1 = iq,\ g_2 = g.
+\]
+
+\[
+	\eps_1\mu_1\omega^2 + q^2 = \eps_2\mu_2\omega^2 - g^2.
+\]
+Пусть \( a \) -- характерный размер волновода, тогда
+\[
+	\overline{g} = ag,\quad \overline{q} = aq,
+\]
+\[
+	\overline{q}^2 + \overline{g}^2 = a^2\omega^2\eps_1\mu_1(\overline{\eps}\overline{\mu} - 1) = \overline{k}_1^2(\overline{\eps}\overline{\mu} - 1) = \overline{R}^2.
+\]
+\(\overline{R}\) -- нормированная частота.
+
+Рассмотрим плоский волновод:
+\[
+	\Delta_\perp E_{z1} + g^2 E_{z1} = 0,
+\]
+\[
+	\Delta_\perp E_{z2} - q^2 E_{z2} = 0,
+\]
+при граничном условии
+\begin{align*}
+	E_{z1}(x=a) = E_{z2}(x=a),\\
+	E_{z1}(x=-a) = E_{z2}(x=-a),\\
+	H_{y1}(x=a) = H_{y2}(x=a),\\
+	H_{y1}(x=-a) = H_{y2}(x=-a).
+\end{align*}
+
+\begin{align*}
+	E_{z1} = A_1\cos(gx) + B_1\sin(gx),\\
+	E_{z2} = A_2 e^{-qx} + B_2 e^(qx).\\
+\end{align*}
+
+Поперечные поля имеют вид
+\begin{align*}
+	E_{x1} = -\frac{ih}{g}(-A_1\sin gx + B_1\cos gx),\\
+	H_{y1} = -\frac{i\omega\eps_1}{g}(-A_1\sin gx + B_1\cos gx)\\
+\end{align*}
+
+Если \(A_1 = 0\), то волны называют чётными (e), \( B_1 = 0 \) -- нечётными (o).
+
+Во второй области
+\begin{align*}
+	E_{x2} = \frac{ih}{q}(-A_2 e^{-qx} + B_2 e^{qx}),\\
+	H_{y2} = \frac{i\omega\eps_2}{q}(-A_2 e^{-qx} + B_2 e^{qx})\\
+\end{align*}
+
+В полупространстве \( x>0 \) в силу конечности поля на бесконечности
+\[
+	E_{x2} = -\frac{ih}{q} A_2 e^{-qx},\quad
+	H_{y2} = -\frac{i\omega\eps_2}{q} A_2 e^{-qx}
+\]
+
+Сшиваем чётную волну:
+\[
+	B_1\sin ga = A_2e^{-qa},\quad -\frac{\eps_1}{g} B_1\cos ga = -\frac{\eps_2}{q} A_2 e^{-qa},
+\]
+\[
+	\tg ga = \frac{\eps_1}{\eps_2}\cdot\frac{q}{g}.
+\]
+
+Для нечётных
+\[
+	\ctg ga = -\frac{\eps_2}{\eps_1}\cdot\frac{q}{g}.
+\]
+
+Тут картинки с графическим решением дисперсионных уравнений.
+
+Теперь H-волны:
+\[
+	H_{z1} = A_1 \cos gx + B_1 \sin gx,\quad H_{z2} = A_2 e^{-gx} + B_2 e^{gx}
+\]
+поперечные поля
+\begin{align*}
+	E_{y1} = \frac{i\omega\mu}{g}(-A_1\sin gx + B_1\cos gx),\\
+	H_{x1} = \frac{-ih}{g}(-A_1\sin gx + B_1\cos gx),
+\end{align*}
+
+\begin{align*}
+	E_{y2} = \frac{-i\omega\mu}{q}(-A_2 e^{-gx} + B_2 e^{gx}),\\
+	H_{x2} = \frac{ih}{q}(-A_2 e^{-qx} + B_2 e^{qx}),
+\end{align*}
+
+Рассмотрим снова то же полупространство (\( B_2 = 0 \)) и граничные условия
+\begin{align*}
+	\mu_1H_{x1}(x=a) = \mu_2H_{x2}(x=a),\\
+	H_{z1}(x=a) = H_{z2}(x=a),\\
+\end{align*}
+
+Чётные волны (\( A_1 = 0 \))
+\begin{align*}
+	\frac{\mu_1}{g}B_1\cos ga = -\frac{\mu_2}{q}(-A_2 e^{-qa}),\\
+	B_1 \sin gx = A_2 e^{-qx},\\
+\end{align*}
+откуда
+\[
+	\frac{\mu_1}{g}\cos ga = \frac{\mu_2}{q}\sin ga
+\]
+\[
+	\tg ga = \frac{\mu_1}{\mu_2}\cdot\frac{q}{g}
+\]
+Для нечётных
+\[
+	\ctg ga = -\frac{\mu_2}{\mu_1}\cdot\frac{q}{g}.
+\]
