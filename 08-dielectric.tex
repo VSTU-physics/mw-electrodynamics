@@ -132,3 +132,96 @@
 \[
 	\ctg ga = -\frac{\mu_2}{\mu_1}\cdot\frac{q}{g}.
 \]
+
+Коэффициент замедления
+\[
+	n = \frac{u}{v_p},\quad n_{max} = \frac{u_2}{u_1}.
+\]
+
+Для круглого диэлектрического волновода как E- и H- волны можно рассматривать только волны \( E_{0n}, H_{0n} \). В общем случае наблюдаются гибридные волны:
+\begin{align*}
+	& \Delta_\perp E_{z1} + g^2 E_{z1} = 0,\\
+	& \Delta_\perp H_{z1} + g^2 H_{z1} = 0,\\
+	& \Delta_\perp E_{z2} - q^2 E_{z2} = 0,\\
+	& \Delta_\perp H_{z2} - q^2 H_{z2} = 0,\\
+\end{align*}
+
+\[
+	\left.E_{z2}\right|_{r\to\infty} \to 0,\quad
+	\left.H_{z2}\right|_{r\to\infty} \to 0,
+\]
+
+И ещё граничные условия
+\begin{align*}
+	& \left.E_{z1}\right|_{r=a} = \left.E_{z2}\right|_{r=a},\\
+	& \left.H_{z1}\right|_{r=a} = \left.H_{z2}\right|_{r=a},\\
+	& \left.E_{\alpha1}\right|_{r=a} = \left.E_{\alpha2}\right|_{r=a},\\
+	& \left.H_{\alpha1}\right|_{r=a} = \left.H_{\alpha2}\right|_{r=a},\\
+\end{align*}
+
+Решения имеют вид:
+\begin{align*}
+	& E_{z1} = E_1 J_m(gr)e^{im\alpha},\\
+	& H_{z1} = H_1 J_m(gr)e^{im\alpha},\\
+	& E_{z2} = E_2 K_m(qr)e^{im\alpha},\\
+	& H_{z2} = H_2 K_m(qr)e^{im\alpha},\\
+\end{align*}
+
+Теперь выразим граничные условия:
+\begin{align*}
+	& E_1 J_m(ga) = E_2 K_m(qa),\\
+	& H_1 J_m(ga) = H_2 K_m(qa),\\
+	& \frac{-1}{g^2}\left(\frac{imh}{r}E_1 J_m(ga) -
+	\mu_1\omega g H_1 J_m'(ga)\right) =
+	\frac{1}{q^2}\left(\frac{imh}{r}E_1 K_m(qa) -
+	\mu_2\omega q H_1 K_m'(qa)\right),\\
+	& \frac{-1}{g^2}\left(\omega\eps_1 g E_1 J_m'(ga) + \frac{h}{a}im H_1 J_m(ga)\right) = \frac{1}{q^2}\left(\omega\eps_2 q E_1 K_m'(qa) + \frac{h}{a}im H_1 K_m(qa)\right).
+\end{align*}
+
+Эта система имеет нетривиальное решение только если её определитель равен нулю:
+\[
+	\begin{vmatrix}
+		J_m(ga) & 0 & -K_m(qa) & 0 \\
+		0 & J_m(ga) & 0 & -K_m(qa) \\
+		\frac{-imh}{ag^2}J_m(ga) & \frac{\mu_1\omega}{g}J_m'(ga) & \frac{-imh}{aq^2}K_m(qa) & \frac{\mu_2\omega}{q}K_m'(qa)\\
+		\frac{-\omega\eps_1}{g}J_m'(ga) & \frac{-imh}{g^2}J_m(ga) & \frac{-\omega\eps_2}{q}K_m'(ga) & \frac{-imh}{q^2}K_m(ga)\\
+	\end{vmatrix} = 0.
+\]
+
+Введём пару вспомогательных функций
+\[
+	s_m(x) = \frac{J_m'(x)}{xJ_m(x)},\quad
+	t_m(x) = -\frac{K_m'(x)}{xK_m(x)}
+\]
+и перепишем определитель в виде
+\[
+	\begin{vmatrix}
+		1 & 0 & -1 & 0 \\
+		0 & 1 & 0 & -1 \\
+		\frac{-imh}{ag^2} & a\mu_1\omega s_m(ga) & \frac{-imh}{aq^2} & -a\mu_2\omega t_m(qa)\\
+		-a\omega\eps_1 s_m(ga) & \frac{-imh}{g^2} & a\omega\eps_2t_m(ga) & \frac{-imh}{q^2}\\
+	\end{vmatrix} = 0.
+\]
+\[
+	-\left(\frac{mh(g^2 + q^2)}{ag^2q^2}\right)^2 + a^2\omega^2(\eps_1s_m(ga) - \eps_2t_m(qa))(\mu_1 s_m(ga) - \mu_2 t_m(qa)) = 0.
+\]
+
+Определить толщину диэлектрической пластины, при которой коэффициент замедления для волны \(E_0\) на частоте 10 ГГц равен \( 1,\!2 \), \(\overline{\eps} = 2,\!5\).
+\[
+	n = \frac{c}{v_p} = \frac{ch}{\omega},
+\]
+\[
+	h^2 = \omega^2/c^2 + q^2 = \overline{\eps\mu}\omega^2/c^2 - g^2,
+\]
+\[
+	q = \sqrt{n^2 - 1}\omega/ c
+\]
+\[
+	g = \sqrt{\overline{\eps\mu} - n^2}\omega / c. 
+\]
+\[
+	a = \frac{1}{g}\arctg{\overline{\eps}\sqrt{\frac{n^2-1}{\overline{\eps\mu} - n^2}}}
+\]
+\[
+	d = 2a = 6\cdot10^{-2}~\text{м}.
+\]
