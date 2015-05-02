@@ -1,189 +1,7 @@
-\chapter{Основные уравнения}
-\section{Уравнения Максвелла}
-  Жили-были электрическое и магнитное поле в средах различных. И изучали их мужи
-  заморские. И установили они законы диковинные. И связал Макссвелл поля эти
-  узами уравнений своих. И переписал потом Хевисайд уравнения эти в форме
-  удобочитаемой:
-
-  \[
-    \begin{cases}
-      \divergence\vec{B} = 0,\\
-      \divergence\vec{D} = \rho,\\
-      \rotor\vec{H} = \vec{j} + \pder{\vec{D}}{t},\\
-      \rotor\vec{E} = -\pder{\vec{B}}{t}.
-    \end{cases}
-  \]
-
-  Создаются поля эти токами да зарядами, но не ими едиными. Могут поля друг
-  друга порождать в изменениях своих.
-
-  Символы басурманские в правой части расшифровать надобно. Плотность тока
-  \[
-      \vec{j} = \vec{j}^\text{пр} + \vec{j}^\text{к} + \vec{j}^\text{ст},
-  \]
-  из частей состоит: тока проводимости, ковекционного и стороннего, окаянного.
-  Токи проводимости и конвекционный соотношениями связанны с полем и плотностью
-  зарядовой:
-  \[
-      \vec{j}^\text{пр} = \sigma\vec{E}, \vec{j}^\text{к} = \rho\vec{v}.
-  \]
-
-  Индукции же \( \vec{D} \) и \( \vec{B} \) с напряжённостями \( \vec{E} \) и
-  \( \vec{H} \) связаны уравнениями материальными.
-
-\section{Материальные уравнения}
-  Уравнения эти вид имеют следующий:
-  \[
-      \vec{D} = \eps\vec{E},\quad
-      \vec{B} = \mu\vec{H}.
-  \]
-    
-  \textit{Хозяюшке на заметку: чтобы узнать, проводник перед Вами или изолятор,
-  спросите, сколько у него \(\omega\eps/\sigma\). Если 10 или больше ---
-  то это изолятор. У проводника эта величина существенно меньше 1 и он скорее
-  промолчит.}
-
-\section{Граничные условия}
-  Если поля сбежать пытаются из родной среду в чужеземную, то на границе
-  происходит казус с их преломлением, следующий непосредственно из уравнений
-  Максвелла:
-  \[
-    \vec{n}\times(\vec{H}_1 - \vec{H}_2) = \vec{I}_s,
-  \]
-  \[
-    \vec{n}\times(\vec{E}_1 - \vec{E}_2) = 0,
-  \]
-  \[
-    \vec{n}\cdot(\vec{D}_1 - \vec{D}_2) = \rho_s,
-  \]
-  \[
-    \vec{n}\cdot(\vec{B}_1 - \vec{B}_2) = 0,
-  \]
-  где \(\vec{n}\) --- вектор нормальный единичный, в первую среду из границы
-  впивающийся.
-
-\section{Закон сохранения энергии}
-  Уравнения Максвелла принуждают поля электрические да магнитные жить по закону
-  Божьему сохранения энергии:
-  \[
-    \pder{}{t}\left(\frac{\vec{E}\cdot\vec{D}}{2} +
-    \frac{\vec{H}\cdot\vec{B}}{2}\right) =
-    -\divergence(\vec{E}\times\vec{H}) - \vec{j}\cdot\vec{E},
-    \quad\textit{(в образе дифференциальном)}
-  \]
-  \[
-    \pder{}{t}\int_V\left(\frac{\vec{E}\cdot\vec{D}}{2} +
-    \frac{\vec{H}\cdot\vec{B}}{2}\right)\,dV = -\oint_S\vec{\Pi}\cdot\vec{dS}
-    - \int_V\vec{j}\cdot\vec{E}\,dV.
-    \quad\textit{(в величии интегральном)}
-  \]
-
-  Вектор \( \vec{\Pi} = \vec{E}\times\vec{H} \) --- вектор Умова-Пойнтинга,
-  который языки иноземные вектором Пойнтинга величают (санкции?).
-
-\section{Гармонические колебания и комплексные амплитуды}
-  Обычно поля непостоянны бывают, колеблются. Разложим их, подобно иноземцу
-  прозорливому на осцилляции гармонические. И опишем их амплитудами
-  комплексными, ведь подобно человеку, у каждого гармонически колеблющегося поля
-  есть друг воображаемый, сдвинутый по фазе на \( \pi/2 \):
-  \[
-    \vec{E}(\vec{r}, t) = \Re \left(\vec{E}(\vec{r})e^{i\omega t} \right)
-  \]
-  Используя друга этого заменить оператор \(\pder{}{t} = i\omega \)
-  позволительно:
-  \[
-    \begin{cases}
-      \divergence \vec{B} = 0\\
-      \divergence\vec{D} = \rho\\
-      \rotor\vec{H} = \vec{j}^\text{ст}+\sigma\vec{E} + i\omega\vec{D}\\
-      \rotor\vec{E} = -i\omega\vec{B}.
-    \end{cases}
-  \]
-  В материальных уравнениях индукции сдвинутся по фазе от напряжённостей
-  \[
-    \vec{D} = \eps e^{i\Delta_\eps}\vec{E},\quad
-    \vec{B} = \mu e^{i\delta_\mu}\vec{H}.
-  \]
-  Если подставить их в уравнения Максвелла, то:
-  \[
-  \begin{cases}
-    \divergence\mu e^{i\delta_\mu}\vec{H} = 0,\\
-    \divergence\eps e^{i\Delta_\eps}\vec{E} = \rho,\\
-    \rotor\vec{H} = \vec{j}^\text{ст} + i\omega\eps e^{i\Delta_\eps}\vec{E},\\
-    \rotor\vec{E} = -i\omega\mu e^{i\delta_\mu}\vec{H},
-  \end{cases}
-  \]
-  повод появится ввести комплексные проницаемости:
-  \[
-    \eps = \eps' - i\eps'', \mu = \mu' - i\mu'',
-  \]
-  и связать их со сдвигами фазовыми из уравнений материальных:
-  \[
-    \eps' = \eps\cos\Delta_\eps,\quad\eps'' = \eps\sin\Delta_\eps +
-    \frac{\sigma}{\omega},
-  \]
-  \[
-    \mu' = \eps\cos\delta_\mu,\quad\mu'' = \eps\sin\delta_\mu.
-  \]
-
-  Так как поля в колебаниях гармоничных пребывают, то о средних рассуждать
-  полезно. Так как \( \average{\cos^2{\omega t}} = 1/2 \), то
-  средние плотности энергии:
-  \[
-    \average{w_E} = \frac{1}{4}\eps'\vec{E}\vec{E}^*,\quad
-    \average{w_H} = \frac{1}{4}\mu'\vec{H}\vec{H}^*,
-  \]
-  а вектор Пойнтинга комплексный смысл среднего уже имеет:
-  \[
-    \vec{\Pi} = \frac{1}{2}\vec{E}\times\vec{H}^*.
-  \]
-  Учитывая это, вспомним про закон Божий сохранения энергии:
-  \[
-    i\omega\int_V\left(\frac{\eps\vec{E}\cdot\vec{E}^*}{2} -
-    \frac{\mu^*\vec{H}\cdot\vec{H}^*}{2}\right)\,dV =
-    -\oint_S\vec{\Pi}\cdot\vec{dS} -\frac{1}{2}\int_V\vec{j}\cdot\vec{E}^*\,dV.
-  \]
-  Забавы ради, выделим части действительные и мнимые и получим балансы мощности
-  активной и реактивной:
-  \[
-    \omega\int_V\left(\frac{\eps''\vec{E}\cdot\vec{E}^*}{2} +
-    \frac{\mu''\vec{H}\cdot\vec{H}^*}{2}\right)\,dV =
-    -\Re\oint_S\vec{\Pi}\cdot\vec{dS} - \Re P_\text{вз},
-  \]
-  \[
-    \omega\int_V\left(\frac{\eps'\vec{E}\cdot\vec{E}^*}{2} -
-    \frac{\mu'\vec{H}\cdot\vec{H}^*}{2}\right)\,dV =
-    -\Im\oint_S\vec{\Pi}\cdot\vec{dS} - \Im P_\text{вз}.
-  \]
-
-\section{Лемма Лоренца и теорема о взаимности}
-  Лемма Лоренца:
-  \begin{quote}
-    если есть два независимых тока, создающих по отдельности соответствующие
-    поля, то
-    \[
-      \divergence\{ \vec{E}_1\times\vec{H}_2 - \vec{E}_2\times\vec{H}_1 \} =
-      \vec{j}_1^\text{ст}\cdot\vec{E}_2 - \vec{j}_2^\text{ст}\cdot\vec{E}_1.
-    \]
-  \end{quote}
-  
-  Это очевидно, т.к
-  \[
-    \divergence{ \vec{E}_1\times\vec{H}_2 } = \vec{H}_2\cdot\rotor\vec{E}_1 -
-    \vec{E}_1\cdot\rotor\vec{H}_2.
-  \]
-
-  Теорема о взаимности:
-  \[
-    \int_{V_1} \vec{j}_1^\text{ст}\cdot\vec{E}_2\,dV =
-    \int_{V_2} \vec{j}_2^\text{ст}\cdot\vec{E}_1\,dV.
-  \]
-  Эта теорема справедлива только в средах с симметричными тензорами и утверждает,
-  что от перемены мест источника и приёмника качество сигнала не меняется.
-  То есть у них это взаимно.
+\chapter{Основы}
 
 \section{Задачи электродинамики}
-  Ну и наконец, зачем нужна электродинамика:
+  Начнём с задач, которые решает электродинамика. Задачи состоят в определении поля в некоторой области, при этом существуют 2 принципиально различных вида задач:
   \begin{itemize}
   \item внутренняя задача: объем поля ограничен замкнутой поверхностью, вне
   которого поля не существует; решение существует и единственно если:
@@ -200,6 +18,113 @@
   \item на поверхности областей, вне которых определяется поле, заданы
   касательные составляющие электрического или магнитного полей;
   \item \(\ds
-        \lim_{r\to\infty}\oint_{4\pi r^2} \vec{E}\times\vec{H}^*\cdot\vec{dS}\).
+        \lim_{r\to\infty}\oint_{4\pi r^2} \vec{E}\times\vec{H}^*\cdot\vec{dS} = 0 \).
   \end{enumerate}
   \end{itemize}
+
+\section{Основные соотношения}
+  Электродинамика отталкивается от \term{уравнений Максвелла}
+  \[
+    \begin{cases}
+      \divergence\vec{B} = 0,\\
+      \divergence\vec{D} = \rho,\\
+      \rotor\vec{H} = \vec{j} + \pder{\vec{D}}{t},\\
+      \rotor\vec{E} = -\pder{\vec{B}}{t}.
+    \end{cases}
+  \]
+  и \term{материальных уравнений}
+  \[
+      \vec{D} = \eps\vec{E},\quad
+      \vec{B} = \mu\vec{H}.
+  \]
+    
+  Из уравнений Максвелла получаются граничные условия для компонент полей на границе раздела двух сред:
+  \begin{gather*}
+    \vec{n}\times(\vec{H}_1 - \vec{H}_2) = \vec{I}_s,\\
+    \vec{n}\times(\vec{E}_1 - \vec{E}_2) = 0,\\
+    \vec{n}\cdot(\vec{D}_1 - \vec{D}_2) = \rho_s,\\
+    \vec{n}\cdot(\vec{B}_1 - \vec{B}_2) = 0,
+  \end{gather*}
+
+  Также из уравнений Максвелла можно получить закон сохранения энергии:
+  \[
+    \pder{}{t}\left(\frac{\vec{E}\cdot\vec{D}}{2} +
+    \frac{\vec{H}\cdot\vec{B}}{2}\right) =
+    -\divergence(\vec{E}\times\vec{H}) - \vec{j}\cdot\vec{E},
+  \]
+  или в интегральном виде
+  \[
+    \pder{}{t}\int_V\left(\frac{\vec{E}\cdot\vec{D}}{2} +
+    \frac{\vec{H}\cdot\vec{B}}{2}\right)\,dV = -\oint_S\vec{\Pi}\cdot\vec{dS}
+    - \int_V\vec{j}\cdot\vec{E}\,dV.
+  \]
+
+  Вектор \( \vec{\Pi} = \vec{E}\times\vec{H} \) --- вектор Умова-Пойнтинга (или просто Пойнтинга).
+
+\section{Гармонические колебания и комплексные амплитуды}
+  В силу линейности уравнений удобно рассматривать решения уравнений в виде гармонических волн. Для них разработан удобный аппарат комплексных амплитуд:
+  \[
+    \vec{E}(\vec{r}, t) = \Re \left(\vec{E}(\vec{r})e^{i\omega t} \right)
+  \]
+  Везде далее, если не оговорено обратное, будут рассматриваться комплексные амплитуды. При таком рассмотрении \(\pder{}{t} = i\omega \) и уравнения несколько упрощаются:
+  \[
+    \begin{cases}
+      \divergence \vec{B} = 0\\
+      \divergence\vec{D} = \rho\\
+      \rotor\vec{H} = \vec{j}^\text{ст} + \sigma\vec{E} + i\omega\vec{D}\\
+      \rotor\vec{E} = -i\omega\vec{B}.
+    \end{cases}
+  \]
+  \[
+    \vec{D} = \eps e^{i\Delta_\eps}\vec{E},\quad
+    \vec{B} = \mu e^{i\delta_\mu}\vec{H}.
+  \]
+  Если подставить их в уравнения Максвелла, то:
+  \[
+  \begin{cases}
+    \divergence\mu e^{i\delta_\mu}\vec{H} = 0,\\
+    \divergence\eps e^{i\Delta_\eps}\vec{E} = \rho,\\
+    \rotor\vec{H} = \vec{j}^\text{ст} + i\omega\eps e^{i\Delta_\eps}\vec{E},\\
+    \rotor\vec{E} = -i\omega\mu e^{i\delta_\mu}\vec{H},
+  \end{cases}
+  \]
+  где уже
+  \[
+    \eps = \eps' - i\eps'', \mu = \mu' - i\mu'',
+  \]
+  \[
+    \eps' = \eps\cos\Delta_\eps,\quad\eps'' = \eps\sin\Delta_\eps +
+    \frac{\sigma}{\omega},
+  \]
+  \[
+    \mu' = \eps\cos\delta_\mu,\quad\mu'' = \eps\sin\delta_\mu.
+  \]
+
+  Так как \( \average{\cos^2{\omega t}} = 1/2 \), то для
+  средних плотностей энергии:
+  \[
+    \average{w_E} = \frac{1}{4}\eps'\vec{E}\vec{E}^*,\quad
+    \average{w_H} = \frac{1}{4}\mu'\vec{H}\vec{H}^*,
+  \]
+  а комплексный вектор Пойнтинга имеет смысл интенсивности:
+  \[
+    \vec{\Pi} = \frac{1}{2}\vec{E}\times\vec{H}^*.
+  \]
+
+  Закон сохранения энергии
+  \[
+    i\omega\int_V\left(\frac{\eps\vec{E}\cdot\vec{E}^*}{2} -
+    \frac{\mu^*\vec{H}\cdot\vec{H}^*}{2}\right)\,dV =
+    -\oint_S\vec{\Pi}\cdot\vec{dS} -\frac{1}{2}\int_V\vec{j}\cdot\vec{E}^*\,dV.
+  \]
+  Выделим действительные и мнимые части и получим балансы активной и реактивной мощности:
+  \[
+    \omega\int_V\left(\frac{\eps''\vec{E}\cdot\vec{E}^*}{2} +
+    \frac{\mu''\vec{H}\cdot\vec{H}^*}{2}\right)\,dV =
+    -\Re\oint_S\vec{\Pi}\cdot\vec{dS} - \Re P_\text{вз},
+  \]
+  \[
+    \omega\int_V\left(\frac{\eps'\vec{E}\cdot\vec{E}^*}{2} -
+    \frac{\mu'\vec{H}\cdot\vec{H}^*}{2}\right)\,dV =
+    -\Im\oint_S\vec{\Pi}\cdot\vec{dS} - \Im P_\text{вз}.
+  \]

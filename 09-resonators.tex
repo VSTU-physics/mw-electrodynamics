@@ -1,0 +1,204 @@
+\chapter{Объёмные резонаторы}
+
+Объёмным резонатором называют совокупность металлических и/или диэлектрических тел, внутри или вблизи которых концентрируется электромагнитное поле. Область существования поля пожно отделить от остального пространства поверхностью S, излучение энергии через которую отсутствует или незначительно.
+
+Количество энергии, запасенной в поле резонатора зависит от частоты и вблизи некоторых частот, называемых собственными, количество запасенной энергии резко увеличивается (при прочих равных внешних условиях).
+
+Назначение резонаторов -- запасение энергии.
+
+По устройству резонаторы делят на открытые и закрытые. Закрытые резонаторы окружены металлическими поверхностями (кольцевые, волноводные). Открытые -- диэлектрические (волноводные, зеркальные).
+
+
+\section{Колебания в резонаторах}
+\[
+	\Delta\vec{E} + k^2\vec{E} = 0,\quad
+	\Delta\vec{H} + k^2\vec{H} = 0.
+\]
+
+Для волноводных резонаторов
+\[
+	\Delta E_z + k^2 E_z = 0,\quad
+	\Delta H_z + k^2 H_z = 0,
+\]
+с граничными условиями
+\[
+	\left.\vec{E}_\tau\right|_S = 0.
+\]
+На боковых гранях
+\[
+	E_z = 0,\quad \pder{H_z}{n} = 0,
+\]
+на торцах
+\[
+	H_z = 0,\quad \pder{E_z}{z} = 0.
+\]
+
+Для прямоугольного резонатора:
+\[
+	k^2 = \pi^2\left[\left(\frac{m}{a}\right)^2+
+					 \left(\frac{n}{b}\right)^2+
+					 \left(\frac{p}{l}\right)^2\right],
+	\omega = \frac{k}{\sqrt{\eps\mu}},
+\]
+
+
+Для E-колебаний
+\begin{align*}
+	E_z & = E_0\sin\frac{m\pi}{a}\sin\frac{n\pi}{b}\cos\frac{p\pi}{l},\\
+	E_x & = -\frac{mp\pi^2}{al g^2}E_0\cos\frac{m\pi}{a}\sin\frac{n\pi}{b}\sin\frac{p\pi}{l},\\
+	E_y & = -\frac{np\pi^2}{bl g^2}E_0\sin\frac{m\pi}{a}\cos\frac{n\pi}{b}\sin\frac{p\pi}{l},\\
+	H_x & = \frac{i\omega\eps}{g^2}\frac{n\pi}{b}\sin\frac{m\pi}{a}\cos\frac{n\pi}{b}\cos\frac{p\pi}{l},\\
+	H_y & = -\frac{i\omega\eps}{g^2}\frac{m\pi}{a}\cos\frac{m\pi}{a}\sin\frac{n\pi}{b}\cos\frac{p\pi}{l}.
+\end{align*}
+Низший тип таких колебаний -- \(E_{110}\). 
+
+Для H-колебаний
+\begin{align*}
+	E_x & = -\frac{in\pi\omega\mu}{b g^2}H_0\cos\frac{m\pi}{a}\sin\frac{n\pi}{b}\sin\frac{p\pi}{l},\\
+	E_y & = -\frac{im\pi\omega\mu}{a g^2}H_0\sin\frac{m\pi}{a}\cos\frac{n\pi}{b}\sin\frac{p\pi}{l},\\
+	H_z & = H_0\cos\frac{m\pi}{a}\cos\frac{n\pi}{b}\sin\frac{p\pi}{l},\\
+	H_x & = -\frac{pm\pi^2}{g^2 al}H_0\sin\frac{m\pi}{a}\cos\frac{n\pi}{b}\cos\frac{p\pi}{l},\\
+	H_y & = -\frac{pn\pi^2}{g^2 bl}H_0\cos\frac{m\pi}{a}\sin\frac{n\pi}{b}\cos\frac{p\pi}{l}.
+\end{align*}
+Низший тип таких колебаний -- \(H_{101}\).
+
+Рассмотрим теперь круглый резонатор:
+\[
+	k^2 = \left(\frac{\nu_{mn}}{a}\right)^2+
+					 \left(\frac{p\pi}{l}\right)^2,
+	\omega = \frac{k}{\sqrt{\eps\mu}},
+\]
+
+Для E-колебаний
+\begin{align*}
+	E_z & = E_0 J_m(\frac{\nu_{mn}}{a}r)\Phi(m\phi)\cos\frac{p\pi}{l},\\
+	E_r & = -\frac{p\pi}{lg}E_0 J_m'(\frac{\nu_{mn}}{a}r)\Phi(m\phi)\sin\frac{p\pi}{l},\\
+	E_\phi & = -\frac{p\pi}{l g^2}\frac{m}{r}E_0 J_m(\frac{\nu_{mn}}{a}r)\Phi'(m\phi)\sin\frac{p\pi}{l},\\
+	H_r & = \frac{i\omega\eps}{g^2}\frac{m}{r}J_m(\frac{\nu_{mn}}{a}r)\Phi'(m\phi)\cos\frac{p\pi}{l},\\
+	H_\phi & = -\frac{i\omega\eps}{g}J_m'(\frac{\nu_{mn}}{a}r)\Phi(m\phi)\cos\frac{p\pi}{l}.
+\end{align*}
+
+Для H-колебаний
+\begin{align*}
+	E_r & = -\frac{ip\pi\omega\mu}{g^2 l}\frac{m}{r}H_0J_m(\frac{\mu_{mn}}{a}r)\Phi'(m\phi)\sin\frac{p\pi}{l},\\
+	E_\phi & = -\frac{ip\pi\omega\mu}{g l}H_0J_m'(\frac{\mu_{mn}}{a}r)\Phi(m\phi)\sin\frac{p\pi}{l},\\
+	H_z & = H_0 J_m(\frac{\mu_{mn}}{a}r)\Phi(m\phi)\sin\frac{p\pi}{l},\\
+	H_r & = -\frac{p\pi}{gl}H_0 J_m'(\frac{\mu_{mn}}{a}r)\Phi(m\phi)\cos\frac{p\pi}{l},\\
+	H_\phi & = -\frac{p\pi}{g^2l}\frac{m}{r}H_0 J_m(\frac{\mu_{mn}}{a}r)\Phi'(m\phi)\cos\frac{p\pi}{l}.
+\end{align*}
+Было бы неплохо всё это вывести.
+
+\section{Добротность объёмных резонаторов}
+
+Начнём с баланса энергии
+\[
+	-\oint_S\vec{\Pi}\cdot\vec{dS} =
+	i\omega\int_V\left(\frac{\eps\vec{E}\cdot\vec{E}^*}{2} -
+    \frac{\mu^*\vec{H}\cdot\vec{H}^*}{2}\right)\,dV +
+    \frac{1}{2}\int_V\vec{j}\cdot\vec{E}^*\,dV,
+\]
+Для поглощаемой мощности
+\[
+    -\Re\oint_S\vec{\Pi}\cdot\vec{dS} =
+    \omega\int_V\left(\frac{\eps''\vec{E}\cdot\vec{E}^*}{2} +
+    \frac{\mu''\vec{H}\cdot\vec{H}^*}{2}\right)\,dV + \Re
+    \frac{1}{2}\int_V\vec{j}\cdot\vec{E}^*\,dV,
+\]
+В левой части стоит мощность, излучения с обратным знаком:
+\[
+	\Re\oint_S\vec{\Pi}\cdot\vec{dS} = P_\text{и} = P_\Sigma + P_{me}.
+\]
+Для распространяющейся в резонаторе энергии
+\[
+    -\Im\oint_S\vec{\Pi}\cdot\vec{dS} = \omega\int_V\left(\frac{\eps'\vec{E}\cdot\vec{E}^*}{2} -
+    \frac{\mu'\vec{H}\cdot\vec{H}^*}{2}\right)\,dV + \Im P_\text{вз}
+\]
+или
+\[
+    -\Im\oint_S\vec{\Pi}\cdot\vec{dS} = 2\omega\int_V\left(\average{w_E} - \average{w_H}\right)\,dV + \Im P_\text{вз}.
+\]
+Добротность
+\[
+	Q = \frac{2\pi W}{PT} = \frac{\omega W}{P},\quad \dot{W} = -\frac{\omega}{Q}W 
+\]
+отсюда, энергия в резонаторе меняется по закону
+\[
+	W = W_0 e^{-\frac{\omega t}{Q}}.
+\]
+Для напряжённости поля
+\[
+	\vec{E} = \vec{E}(0)e^{-\frac{\omega t}{2Q}}e^{i\omega t}
+\]
+Для комплексной частоты
+\[
+	\omega = \omega' + i\omega'',\quad \omega' = \omega, \quad \omega'' = \frac{\omega}{2Q}.
+\]
+Удобнее рассмотреть
+\[
+	\frac{1}{Q} = \frac{P_\text{ср} + P_{me} + P_\Sigma + P_\text{вз}}{\omega W} = \frac{1}{Q_0} + \frac{1}{Q_{ex}}.
+\]
+При расчёте собственной добротности \(Q_0\) учитываются 3 фактора: диэлектрические, магнитные и металлические потери.
+\[
+	Q_{me} = 2\frac{\mu}{\mu_{me}}\sqrt{\frac{\omega\mu_{me}\sigma}{2}}
+	\frac{\int_V H^2 dV}{\oint_S H_\tau^2 dS}.
+\]
+
+Имеется достаточно длинный отрезок волновода 23 на 10. Из мего требуется сделат перестраиваемый резонатор. Определить диапазон частот перестройки и длину резонатора при невозможности возникновения высших гармоник.
+
+\[
+	\omega = \pi \sqrt{\left(\frac{m}{a}\right)^2 + \left(\frac{n}{b}\right)^2 + \left(\frac{p}{l}\right)^2}.
+\]
+
+Низшим перестраиваемым типом типом будет \( H_{101} \). Чтобы оно было низшим, необходимо:
+\[
+	\omega_{101} < \omega_{110},\quad  l > b.
+\]
+Частота при этом перестраивается в диапазоне
+\[
+	c/2a < f < c/2\sqrt{1/a^2 + 1/b^2},
+\]
+\[
+	6.5~\text{ГГц} < f < 16~\text{ГГц}.
+\]
+С другой стороны, низшая частота для \( H_{201} \) равна \( f_max = 13\text{ГГц} \). Оценим максимальный размер волновода:
+\[
+	l_{min} = 1/\sqrt{c^2f_{max}^2/4 - 1/a^2} = a/sqrt{3} = 13\text{мм}.
+\]
+\[
+	6.5~\text{ГГц} < f < 13~\text{ГГц}.
+\]
+
+Определить отношение a/l, при котором частоты низших типов E и H колебаний совпадают.
+
+\[
+	\mu_{11}^2/a^2 + \pi^2/l^2 = \nu_{01}^2/a^2, l/a = \pi/\sqrt{\nu_{01}^2 - \mu_{11}^2} = 2.
+\]
+
+Определить 5 низших частот и указать типы колебаний резонатора \(1\times2\times3\) см и для круглого a = 1см, l = 2,5 см.
+
+Определить размеры резонатора, у которого \(E_{010}\) 5 ГГц, \(H_{111}\) 3,5 ГГц.
+
+Определить добротность резонатора 34 72 100 работающего на основном типе колебания, если материал стенок -- медь, а внутреннее заполнение имеет \(\eps = 2,35\), \(\tg\delta_\eps = 1,3\cdot10^{-5}\).
+
+Основной тип колебаний \( H_{011} \) с частотой
+\[
+	\omega = \frac{c\pi}{\sqrt{\eps}}\sqrt{\frac{1}{b^2} + \frac{1}{l^2}}.
+\]
+\[
+	Q_\eps = \frac{1}{\tg\delta_\eps},
+\]
+\[
+	Q_{me} = 2\frac{\mu}{\mu_{me}}\sqrt{\frac{\omega\mu_{me}\sigma}{2}}
+	\frac{\int_V H^2 dV}{\oint_S H_\tau^2 dS}.
+\]
+\[
+	\int_V H^2 dV = H_0^2\left( 1 + \frac{b^2}{l^2} \right)\frac{abl}{4},
+\]
+\[
+	\int_S H^2 dS = 2H_0^2\left( 1 + \frac{b^2}{l^2} \right)\frac{bl}{4} +
+	2H_0^2\frac{al}{2} + 2H_0^2\frac{b^2}{l^2}\frac{ab}{2},
+\]
+\[
+	Q_{me} = \frac{\mu}{\mu_{me}}\sqrt{\frac{\omega\mu_{me}\sigma}{2}}
+	\frac{\left( 1 + \frac{b^2}{l^2} \right)\frac{abl}{4}}{\left( 1 + \frac{b^2}{l^2} \right)\frac{bl}{4} + \frac{al}{2} + \frac{b^2}{l^2}\frac{ab}{2}}.
+\]

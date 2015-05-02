@@ -1,7 +1,7 @@
-\documentclass[a4paper, oneside, 12pt]{book}
+\documentclass{book}
+\usepackage[no-math]{fontspec} % loaded by polyglossia, but included here for transparency 
 \usepackage[russian]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage[T2A]{fontenc}
+\setmainfont{PT Sans}
 \usepackage{indentfirst}
 \usepackage[left=3cm, top=1.5cm, bottom=1.5cm, right=3cm]{geometry}
 \usepackage[derivative, vectors, complex]{hedmaths}
@@ -9,6 +9,7 @@
 \usepackage{tikz}
 \usepackage{pgfplots}
 \renewcommand{\vec}\boldsymbol
+\newcommand{\term}\textbf
 
 \begin{document}
 
@@ -28,4 +29,5 @@
 \input{07-exotic}
 \input{08-dielectric}
 \part{Резонаторы}
+\input{09-resonators}
 \end{document}
