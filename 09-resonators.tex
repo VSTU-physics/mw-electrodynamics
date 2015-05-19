@@ -202,3 +202,129 @@
 	Q_{me} = \frac{\mu}{\mu_{me}}\sqrt{\frac{\omega\mu_{me}\sigma}{2}}
 	\frac{\left( 1 + \frac{b^2}{l^2} \right)\frac{abl}{4}}{\left( 1 + \frac{b^2}{l^2} \right)\frac{bl}{4} + \frac{al}{2} + \frac{b^2}{l^2}\frac{ab}{2}}.
 \]
+
+\chapter{Возбуждение волноводов и резонаторов}
+Предположим, что в резонаторе задан сторонний ток \( \vec{j}^\text{ст} \), определяемый только внешним источником и не зависящий от поля в волноводе, а на поврхности есть окно связи, в котором заданы поля.
+
+Обычно сторонний ток вводится либо электрическим зондом (штырь), либо магнитным (петля).
+
+Граничные условия в этом случае
+\begin{align*}
+	& \vec{E}_\tau = 0 (S - S_0),\\
+	& \vec{E}_\tau = \vec{E}_{\tau0} (S_0),\\
+	& \vec{H}_\tau = \vec{H}_{\tau0} (S_0).\\
+\end{align*}
+
+\section{Возбуждение волновода}
+Рассмотрим теперь волновод, в котором возбуждающие элементы сосредоточены на отрезке \([z_1, z_2]\). При этом в волноводе в обе стороны от этой области распространяются волны. Поля будем искать на достаточно большом расстоянии от источников. Поле будем искать в виде разложения по собственным волнам (\( z > z_2 \)):
+\[
+	\vec{E} = \sum A_m\vec{E}_m,\quad \vec{H} = \sum A_m\vec{H}_m.
+\]
+
+Лемма Лоренца:
+\[
+  \oint_S\left( \vec{E}_1\times\vec{H}_2 - \vec{E}_2\times\vec{H}_1 \right)\cdot d\vec{S} = \int_V \left(
+  \vec{j}_1^\text{ст}\cdot\vec{E}_2 - \vec{j}_2^\text{ст}\cdot\vec{E}_1\right) dV.
+\]
+
+Рассмотрим теперь в качестве \( \vec{E}_1 \) поля в системе, а \( \vec{E}_2 \) -- поле некоторой собственной волны. Тогда
+\[
+  \oint_S\left( \vec{E}\times\vec{H}_m - \vec{E}_m\times\vec{H} \right)\cdot d\vec{S} = \int_V \vec{j}^\text{ст}\cdot\vec{E}_m dV.
+\]
+
+Распишем подробнее:
+\begin{gather*}
+  \int_{S_2}\left( \sum A_n\vec{E}_n\times\vec{H}_m - \vec{E}_m\times\sum A_n\vec{H}_n \right)\cdot\vec{z}_0 dS
+  -\int_{S_2}\left( \sum A_{-n}\vec{E}_{-n}\times\vec{H}_m - \vec{E}_m\times\sum A_{-n}\vec{H}_{-n} \right)\cdot\vec{z}_0 dS +\\+
+  \int_S\left( \vec{E}\times\vec{H}_m - \vec{E}_m\times\vec{H} \right)\cdot d\vec{S} = \int_V \vec{j}^\text{ст}\cdot\vec{E}_m dV.
+\end{gather*}
+
+Так как \( \vec{E}_S = 0 \),
+\begin{gather*}
+  \sum A_n\int_{S_2}\left(\vec{E}_n\times\vec{H}_m - \vec{E}_m\times\vec{H}_n \right)\cdot\vec{z}_0 dS
+  -\sum A_{-n}\int_{S_2}\left( \vec{E}_{-n}\times\vec{H}_m - \vec{E}_m\times\vec{H}_{-n} \right)\cdot\vec{z}_0 dS +\\+
+  \int_{S_0} \vec{E}_0\times\vec{H}_m \cdot d\vec{S} = \int_V \vec{j}^\text{ст}\cdot\vec{E}_m dV.
+\end{gather*}
+
+Учитывая ортогональность собственных волн для положительного \( m \) имеем
+
+\[
+  -A_{-m}\int_{S_2}\left( \vec{E}_{-m}\times\vec{H}_m - \vec{E}_m\times\vec{H}_{-m} \right)\cdot\vec{z}_0 dS =
+  -\int_{S_0} \vec{E}_0\times\vec{H}_m \cdot d\vec{S} + \int_V \vec{j}^\text{ст}\cdot\vec{E}_m dV.
+\]
+
+Рассмотрим норму волны
+\[
+	N_m = \int \vec{E}_m \times \vec{H}_m^* \cdot d\vec{S}
+\]
+
+\[
+	A_{-m} = \frac{1}{2N_m} \left[ -\int_{S_0} \vec{E}_0\times\vec{H}_m \cdot d\vec{S} + \int_V \vec{j}^\text{ст}\cdot\vec{E}_m dV \right]
+\]
+
+Для \( -m \) гармоники имеем
+
+\[
+  A_{m}\int_{S_2}\left( \vec{E}_{m}\times\vec{H}_{-m} - \vec{E}_{-m}\times\vec{H}_{m} \right)\cdot\vec{z}_0 dS =
+  -\int_{S_0} \vec{E}_0\times\vec{H}_{-m} \cdot d\vec{S} + \int_V \vec{j}^\text{ст}\cdot\vec{E}_{-m} dV.
+\]
+
+\[
+	A_m = \frac{1}{2N_m} \left[ -\int_{S_0} \vec{E}_0\times\vec{H}_{-m} \cdot d\vec{S} + \int_V \vec{j}^\text{ст}\cdot\vec{E}_{-m} dV \right]
+\]
+
+Итого:
+
+\[
+	A_{\pm m} = \frac{1}{2N_m} \left[ \int_V \vec{j}^\text{ст}\cdot\vec{E}_{\mp m} dV - \int_{S_0} \vec{E}_0\times\vec{H}_{\mp m} \cdot d\vec{S} \right]
+\]
+
+\section{Возбуждение резонаторов}
+\[
+	\vec{E} = \sum A_n \vec{E}_n,\quad \vec{H} = \sum B_n \vec{H}_n
+\]
+Запишем уравнения Максвелла для собственных колебаний
+\[
+	\begin{cases}
+	\rotor \vec{E}_n = -i\omega_n\mu\vec{H}_n\\
+	\rotor \vec{H}_n = i\omega_n\eps\vec{E}_n,		
+	\end{cases}
+\]
+и для картины поля вцелом
+\[
+	\begin{cases}
+	\rotor \vec{E} = -i\omega\mu\vec{H}\\
+	\rotor \vec{H} = i\omega\eps\vec{E} + \vec{j}^\text{ст}.		
+	\end{cases}
+\]
+
+\[
+	\divergence \vec{E}_n\times\vec{H}^* = \vec{H}^* \cdot \rotor\vec{E}_n -\vec{E}_n \cdot \rotor\vec{H}^* = -i\omega_n\mu\vec{H}_n\cdot\vec{H}^* + i\omega\eps^*\vec{E}_n\vec{E}^* - {\vec{j}^\text{ст}}^*\vec{E}_n
+\]
+
+\[
+	\divergence \vec{E}\times\vec{H}_n^* = \vec{H}_n^* \cdot \rotor\vec{E} -\vec{E} \cdot \rotor\vec{H}_n^* = -i\omega\mu\vec{H}\cdot\vec{H}_n^* + i\omega_n\eps^*\vec{E}\vec{E}_n^*.
+\]
+
+Интегрируя два этих выражения по объёму резонатора получаем
+
+\[
+	\oint \vec{E}_n\times\vec{H}^* \cdot d\vec{S} = 0 = -i\omega_n 2W_nB_n^* + i\omega 2W_nA_n^* + \int {\vec{j}^\text{ст}}^*\vec{E}_n dV,
+\]
+
+\[
+	\oint \vec{E}\times\vec{H}_n^* \cdot d\vec{S} = \int_{S_0} \vec{E}_0\times\vec{H}_n^* \cdot d\vec{S} = -i\omega 2W_nB_n + i\omega_n 2W_nA_n.
+\]
+
+Получаем систему из двух уравнений с двумя неизвестными
+\[
+	\begin{cases}
+		\omega A_n - \omega_n B_n = \cfrac{i}{2W_n}\int \vec{j}^\text{ст}\vec{E}_n^* dV\\
+		\omega_n A_n - \omega B_n = -\cfrac{i}{2W_n} \int_{S_0} \vec{E}_0\times\vec{H}_n^* \cdot d\vec{S}.
+	\end{cases}
+\]
+Отсюда
+\begin{align*}
+	& A_n = \frac{1}{2W_n(\omega^2-\omega_n^2)}\left[ \omega\int \vec{j}^\text{ст}\vec{E}_n^* dV + \omega_n\int_{S_0} \vec{E}_0\times\vec{H}_n^* \cdot d\vec{S} \right],\\
+	& B_n = -\frac{1}{2W_n(\omega^2-\omega_n^2)}\left[ \omega_n\int \vec{j}^\text{ст}\vec{E}_n^* dV + \omega\int_{S_0} \vec{E}_0\times\vec{H}_n^* \cdot d\vec{S} \right].
+\end{align*}
