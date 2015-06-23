@@ -1,24 +1,42 @@
-\documentclass{book}
-\usepackage[no-math]{fontspec} % loaded by polyglossia, but included here for transparency 
+\documentclass[oneside]{book}
 \usepackage[russian]{babel}
-\setmainfont{PT Sans}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
 \usepackage{indentfirst}
+\usepackage{hyperref}
 \usepackage[left=3cm, top=1.5cm, bottom=1.5cm, right=3cm]{geometry}
 \usepackage[derivative, vectors, complex]{hedmaths}
+
+
+\makeatletter
+\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+                    \thispagestyle{empty}% original style: plain
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
+\makeatother
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[LO,RE]{\leftmark}
+\fancyfoot[C]{}
+\renewcommand{\headrulewidth}{0.4pt}
+
 \usepackage{amsmath}
 \usepackage{tikz}
 \usepackage{pgfplots}
+
 \renewcommand{\vec}\boldsymbol
 \newcommand{\term}\textbf
 
 \begin{document}
-
 \title{Электродинамика СВЧ}
 \author{В. Динамик, А. Электрик}
 \maketitle
-\input{00-about}
+% \input{00-about}
 \tableofcontents
-\input{01-intro}
+% \input{01-intro}
 \part{Основы электродинамики}
 \input{02-basics}
 \input{03-waves}
