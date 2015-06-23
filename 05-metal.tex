@@ -14,7 +14,19 @@
 \]
 Если условие не выполняются, то в системе будут наблюдаться гибридные волны.
 
-Рассмотрим прямоугольный волновод \( a \times b, a > b, a || Ox \).
+Рассмотрим прямоугольный волновод \( a \times b, a > b, a || Ox \), представленный на рисунке ниже:
+
+\begin{center}
+\begin{tikzpicture}[scale=0.15]
+	\draw[very thick] (0, 0) rectangle (23, 10);
+	\draw[->] (-4, -4) -- (25, -4);
+	\draw[->] (-4, -4) -- (-4, 13);
+	\node[below] at (11.5, 0) {$a$};
+	\node[left] at (0, 5) {$b$};
+	\node[below] at (25,-4) {$x$};
+	\node[left] at (-4, 13) {$y$};
+\end{tikzpicture}
+\end{center}
 
 E-волны (TM) имеют в нём следующий вид:
 
@@ -129,10 +141,26 @@ H-волны (TE):
 \end{gather*}
 
 Основной режим работы -- TEM-волны, волноводные гармоники -- паразитные.
-
+Для определения продольных компонент полей придётся решать уравнение Гельмгольца
 \[
 	\Delta_\perp E_z = g^2 E_z = 0,\quad \Delta_\perp H_z = g^2 H_z = 0.
 \]
+в области, огрпниченной двумя цилиндическими поверхностями
+\begin{center}
+\begin{tikzpicture}[scale=0.2]
+	\draw[very thick] (0, 0) circle (10);
+	\draw[very thick] (0, 0) circle (4);
+	\draw (-12, 0) -- (12, 0);
+	\draw[->] (0, 0) -- (-3.87, 1);
+	\node[above] at (-1.94, 0.5) {$b$};
+	\draw[->] (0, 0) -- (7.9, -5.9);
+	\node[above] at (5.3, -4) {$a$};
+	\draw[->] (0, 0) -- (5, 5) node[above]{$r$};
+	\draw[->] (6,0) arc (0:45:6 and 6);
+	\node[right] at (6, 2.33) {$\phi$};
+\end{tikzpicture}
+\end{center}
+
 с граничными
 \[
 	\left.E_\tau\right|_{r=a,b} = 0 \Rightarrow \left.E_z\right|_{r=a,b} = 0, \left.\pder{H_z}{r}\right|_{r=a,b} = 0
@@ -141,11 +169,11 @@ H-волны (TE):
 	\frac{1}{r}\pder{}{r}\left( rE_z \right) + \frac{1}{r^2}\ppder{E_z}{\phi} + g^2E_z = 0.
 \]
 \[
-	E_z = [AJ_m(gr) + BN_m(gr)]\cos(m\phi)
+	E_z = [AJ_m(gr) + BN_m(gr)]\Phi(m\phi)
 \]
-При \( b = 0 \) \( B = 0 \)
+При \( b = 0 \) из условия конечности поля \( B = 0 \) и
 \[
-	E_z = E_0J_m(gr)\cos(m\phi).
+	E_z = E_0J_m(gr)\Phi(m\phi).
 \]
 Поперечные волновые числа определяются из условия
 \[
