@@ -9,11 +9,7 @@
 
 
 \makeatletter
-\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
-                    \thispagestyle{empty}% original style: plain
-                    \global\@topnum\z@
-                    \@afterindentfalse
-                    \secdef\@chapter\@schapter}
+  \let\ps@plain\ps@empty
 \makeatother
 
 \usepackage{fancyhdr}
@@ -24,6 +20,19 @@
 \renewcommand{\headrulewidth}{0.4pt}
 
 \usepackage{amsmath}
+\usepackage{amsthm}
+\newtheoremstyle{problemstyle}  % <name>
+        {3pt}                                               % <space above>
+        {3pt}                                               % <space below>
+        {\normalfont}                               % <body font>
+        {}                                                  % <indent amount}
+        {\bfseries}                 % <theorem head font>
+        {\bfseries.}         % <punctuation after theorem head>
+        {.5em}                                          % <space after theorem head>
+        {}                                                  % <theorem head spec (can be left empty, meaning `normal')>
+\theoremstyle{problemstyle}
+\newtheorem{problem}{Задача}
+
 \usepackage{tikz}
 \usepackage{pgfplots}
 
@@ -35,9 +44,9 @@
 \title{Электродинамика СВЧ}
 \author{В. Динамик, А. Электрик}
 \maketitle
-% \input{00-about}
+\input{00-about}
 \tableofcontents
-% \input{01-intro}
+\input{01-intro}
 \part{Основы электродинамики}
 \input{02-basics}
 \input{03-waves}
