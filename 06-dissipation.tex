@@ -1,7 +1,7 @@
 \section{Затухание}
 Причины:
 \begin{itemize}
-	\item потери с среде
+	\item потери в среде
 	\item потери в металле
 	\item излучение в пространство
 \end{itemize}
@@ -33,7 +33,11 @@
 \[
 	h'' = \frac{1}{2}\frac{\Re Z_{Me}\oint_C |H_\tau^2| dl}{\iint_S \Pi_z dS}.
 \]
+\begin{problem}
+	Определить затухание E-волн.
+\end{problem}
 
+Числитель:
 \[
 	\oint_C |H_\tau^2| dl = 2 \left( \int_{y=0, x=0}^{x=a} H_x^2 dx +
 	\int_{x=0, y=0}^{y=b} H_y^2 dx  \right).
@@ -49,6 +53,7 @@
 \[
 	\oint_C |H_\tau^2| dl =\left(\frac{\omega\eps \pi}{g_{m,n}^2}E_0\right)^2 \frac{n^2a^3 + m^2b^3}{a^2b^2}.
 \]
+
 Знаменатель:
 \[
 	\iint_S (E_xH_y^* - E_yH_x^*) dS = \frac{\omega\eps}{h}
@@ -57,61 +62,22 @@
 	\frac{\omega\eps}{h}
 	\left(\frac{h}{g_{m,n}}E_0\right)^2\frac{ab}{4},
 \]
-откуда
+
+В итоге
 \[
 	h'' = \frac{2Z_{Me}\frac{\omega\eps \pi^2}{g_{m,n}^2} (n^2a^3 + m^2b^3)}{ha^3b^3}
 \]
 
-Если ввести сквозную нумерацию гармоник, то
-\[
-	\int (\vec{E}_m\times\vec{H}_n^*)\cdot\vec{dS}_\perp = \delta_{mn}N_m.
-\]
+\begin{problem}
+	Показать, что E- и H- волны ортогональны: если ввести сквозную нумерацию гармоник, то
+  \[
+	  \int (\vec{E}_m\times\vec{H}_n^*)\cdot\vec{dS}_\perp = \delta_{mn}N_m.
+  \]
+\end{problem}
 
-Рассмотрим подробнее
-\[
-	(\vec{E}_m\times\vec{H}_n^*)\cdot\vec{z}_0 =
-	\begin{vmatrix}
-		E_{mx} & E_{my}\\
-		H_{nx}^* & H_{ny}^*\\
-	\end{vmatrix}
-	=
-	E_{mx}H_{ny}^* - E_{my}H_{nx}^*.
-\]
-
-Моды являются собсвенными функциями системы уравнений
-\[
-	\Delta_\perp E_{m\alpha} + g_m^2 E_{m\alpha} = 0,\quad \Delta_\perp H_{n\alpha}^* + g_n^2 H_{n\alpha}^* = 0.
-\]
-с нужными граничными условиями.
-
-Помножим некоторые уравнения, чтобы получить:
-\[
-	H_{ny}^*\Delta_\perp E_{mx} + g_m^2 H_{ny}^*E_{mx} = 0,
-\]
-\[
-	H_{nx}^*\Delta_\perp E_{my} + g_m^2 H_{nx}^*E_{my} = 0,
-\]
-откуда
-\[
-	g_m^2(E_{mx}H_{ny}^* - E_{my}H_{nx}^*) = H_{nx}^*\Delta_\perp E_{my} - H_{ny}^*\Delta_\perp E_{mx}
-\]
-Аналогично
-\[
-	g_n^2(E_{mx}H_{ny}^* - E_{my}H_{nx}^*) = \Delta_\perp H_{nx}^* E_{my} - \Delta_\perp H_{ny}^* E_{mx}
-\]
-
-Теперь:
-\begin{align*}
-	&(g_m^2 - g_n^2)(E_{mx}H_{ny}^* - E_{my}H_{nx}^*) =\\
-	& = \int_{S_\perp} dS \left( H_{nx}^*\Delta_\perp E_{my} - \Delta_\perp H_{nx}^* E_{my} \right)
-	-
-	\int_{S_\perp} dS \left( H_{ny}^*\Delta_\perp E_{mx} - \Delta_\perp H_{ny}^* E_{mx} \right) =\\
-	& = \int_C dl \left(H_{nx}^* \pder{E_{my}}{n} - E_{my}\pder{H_{ny}^*}{n}\right) -
-	\int_C dl \left( H_{ny}^*\pder{E_{mx}}{n} - \pder{H_{ny}^*}{n} E_{mx} \right)
-\end{align*}
-
-
-Рассчитаем потери в круглом волноводе (на гармонике \(E_{01}\)):
+\begin{problem}
+	Рассчитать потери в круглом волноводе для гармоники \(E_{01}\).
+\end{problem}
 \[
 	h'' = \frac{\Re Z_m}{2}\frac{\oint dl |\vec{H_\tau}|^2}{\iint \vec{dS}\cdot(\vec{E}\times\vec{H}^*)},
 \]
